@@ -38,5 +38,6 @@ namespace TShop.Model.Models
         public virtual ProductCategory ProductCagory { set; get; }
 
         public virtual IEnumerable<DetailOrder> DetailOrders { set; get; }
+        public virtual IEnumerable<ProductTag> ProductTags { set; get; }
     }
 }

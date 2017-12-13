@@ -31,5 +31,7 @@ namespace TShop.Model.Models
         [ForeignKey("CategoryId")]
 
         public virtual PostCategory PostCategory { set; get; }
+
+        public virtual IEnumerable<PostTag> PostTags { set; get; }
     }
 }
