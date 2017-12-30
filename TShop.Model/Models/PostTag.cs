@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TShop.Model.Models
 {
@@ -12,13 +7,17 @@ namespace TShop.Model.Models
     public class PostTag
     {
         [Key]
+        [Column(TypeName = "varchar")]
+        [MaxLength(50)]
         public string TagId { set; get; }
+
         [Key]
-        public string PostId { set; get; }
+        public int PostId { set; get; }
 
         [ForeignKey("TagId")]
-        public virtual Tag Tags { set; get; }
+        public virtual Tag Tag { set; get; }
+
         [ForeignKey("PostId")]
-        public virtual Post Posts { set; get; }
+        public virtual Post Post { set; get; }
     }
 }

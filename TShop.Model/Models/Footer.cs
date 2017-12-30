@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TShop.Model.Models
 {
@@ -12,7 +7,12 @@ namespace TShop.Model.Models
     public class Footer
     {
         [Key]
+        [Column(TypeName = "varchar")]
+        [MaxLength(50)]
         public string Id { set; get; }
+
+        [Required]
+        [MaxLength(500)]
         public string FooterContent { set; get; }
     }
 }
