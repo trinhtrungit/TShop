@@ -7,11 +7,12 @@ namespace TShop.Model.Models
     public class PostTag
     {
         [Key]
-        [Column(TypeName = "varchar")]
+        [Column(TypeName = "varchar", Order = 1)]
         [MaxLength(50)]
         public string TagId { set; get; }
 
         [Key]
+        [Column(Order = 2)]
         public int PostId { set; get; }
 
         [ForeignKey("TagId")]

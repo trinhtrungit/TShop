@@ -26,7 +26,8 @@ namespace TShop.Model.Models
         [MaxLength(300)]
         public string Image { set; get; }
 
-        public XElement MoreImages { set; get; }
+        [Column(TypeName = "xml")]
+        public string MoreImages { set; get; }
         public decimal Price { set; get; }
         public decimal? Promotion { set; get; }
         public int? Quantity { set; get; }
