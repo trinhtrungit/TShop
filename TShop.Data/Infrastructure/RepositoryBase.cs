@@ -6,7 +6,7 @@ using System.Linq.Expressions;
 
 namespace TShop.Data.Infrastructure
 {
-    public abstract class RepositoryBase<T> where T : class
+    public abstract class RepositoryBase<T> : IRepository<T> where T : class
     {
         #region Properties
 
@@ -147,5 +147,30 @@ namespace TShop.Data.Infrastructure
         }
 
         #endregion Implementation
+
+        void IRepository<T>.Add(T entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        void IRepository<T>.Delete(T entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        IQueryable<T> IRepository<T>.GetAll(string[] includes = null)
+        {
+            throw new NotImplementedException();
+        }
+
+        IQueryable<T> IRepository<T>.GetMulti(Expression<Func<T, bool>> predicate, string[] includes = null)
+        {
+            throw new NotImplementedException();
+        }
+
+        IQueryable<T> IRepository<T>.GetMultiPaging(Expression<Func<T, bool>> filter, out int total, int index = 0, int size = 50, string[] includes = null)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

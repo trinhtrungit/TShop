@@ -5,7 +5,7 @@ using TShop.Model.Models;
 
 namespace TShop.Data.Repositories
 {
-    public interface IProductCatogoryRepository
+    public interface IProductCatogoryRepository : IRepository<ProductCategory>
     {
         IEnumerable<ProductCategory> GetByAlias(string alias);
     }
