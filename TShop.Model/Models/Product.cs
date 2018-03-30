@@ -40,7 +40,7 @@ namespace TShop.Model.Models
         public int? ViewCount { set; get; }
 
         [ForeignKey("CategoryId")]
-        public virtual ProductCategory ProductCagory { set; get; }
+        public virtual ProductCategory ProductCategory { set; get; }
 
         public virtual IEnumerable<DetailOrder> DetailOrders { set; get; }
         public virtual IEnumerable<ProductTag> ProductTags { set; get; }

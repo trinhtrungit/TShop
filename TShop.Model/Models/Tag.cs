@@ -16,5 +16,6 @@ namespace TShop.Model.Models
         public string TagType { set; get; }
 
         public virtual IEnumerable<ProductTag> ProductTags { set; get; }
+        public virtual IEnumerable<PostTag> PostTags { set; get; }
     }
 }
