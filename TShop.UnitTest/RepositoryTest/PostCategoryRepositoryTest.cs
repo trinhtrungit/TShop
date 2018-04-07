@@ -1,0 +1,46 @@
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.Generic;
+using TShop.Data.Infrastructure;
+using TShop.Data.Repositories;
+using TShop.Model.Models;
+using System.Linq;
+
+namespace TShop.UnitTest.RepositoriesTest
+{
+    [TestClass]
+    public class PostCategoryRepositoryTest
+    {
+        private IDbFactory _dbFacetory;
+        private IPostCategoryRepository _postCategoryRepository;
+        private IUnitOfWork _unitOfWork;
+
+        [TestInitialize]
+        public void Intialize()
+        {
+            _dbFacetory = new DbFactory();
+            _postCategoryRepository = new PostCategoryRepository(_dbFacetory);
+            _unitOfWork = new UnitOfWork(_dbFacetory);
+        }
+
+        [TestMethod]
+        public void PostCategory_Repository_Create()
+        {
+            PostCategory postCategory = new PostCategory();
+            postCategory.Name = "Post category name 1";
+            postCategory.Alias = "category-1";
+            postCategory.FeatureImage = "abc.com";
+            postCategory.Status = true;
+            var result = _postCategoryRepository.Add(postCategory);
+
+            _unitOfWork.Commit();
+            Assert.IsNotNull(result);
+            Assert.AreEqual(9, result.Id);
+        }
+        [TestMethod]
+        public void PostCategory_Repository_GetAll()
+        {
+            var lstPostCate = _postCategoryRepository.GetAll();
+            Assert.AreEqual(9, lstPostCate.Count());
+        }
+    }
+}

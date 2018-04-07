@@ -8,7 +8,7 @@ namespace TShop.Service
 {
     public interface IPostCategoryService
     {
-        void Add(PostCategory postCategory);
+        PostCategory Add(PostCategory postCategory);
 
         void Update(PostCategory postCategory);
 
@@ -30,9 +30,9 @@ namespace TShop.Service
             this._postCategoryRepository = _postCategoryRepository;
             this._unitOfWork = unitOfWork;
         }
-        public void Add(PostCategory postCategory)
+        public PostCategory Add(PostCategory postCategory)
         {
-            this._postCategoryRepository.Add(postCategory);
+            return this._postCategoryRepository.Add(postCategory);
         }
 
         public void Update(PostCategory postCategory)
