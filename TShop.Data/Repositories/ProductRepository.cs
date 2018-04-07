@@ -25,12 +25,12 @@ namespace TShop.Data.Repositories
             return this.DbContext.Products.Where(n => n.Alias == alias);
         }
 
-        public IEnumerable<Product> GetByTagPaging(string tag, int pageIndex, int pageSize, out int rowTotals)
+        public IEnumerable<Product> GetByTagPaging(string tagId, int pageIndex, int pageSize, out int rowTotals)
         {
             var query = from product in this.DbContext.Products
                         join proTag in this.DbContext.ProductTags
                         on product.Id equals proTag.ProductId
-                        where proTag.TagId == tag && product.Status
+                        where proTag.TagId == tagId && product.Status
                         orderby product.CreateDate descending
                         select product;
             rowTotals = query.Count();

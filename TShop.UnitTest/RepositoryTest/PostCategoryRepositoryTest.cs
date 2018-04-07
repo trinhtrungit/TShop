@@ -34,13 +34,13 @@ namespace TShop.UnitTest.RepositoriesTest
 
             _unitOfWork.Commit();
             Assert.IsNotNull(result);
-            Assert.AreEqual(9, result.Id);
+            Assert.AreEqual(10, result.Id);
         }
         [TestMethod]
         public void PostCategory_Repository_GetAll()
         {
             var lstPostCate = _postCategoryRepository.GetAll();
-            Assert.AreEqual(9, lstPostCate.Count());
+            Assert.AreEqual(10, lstPostCate.Count());
         }
     }
 }
