@@ -36,6 +36,14 @@
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -68,6 +76,18 @@
     <Compile Include="Migrations\201804081442295_AddErrorTable.cs" />
     <Compile Include="Migrations\201804081442295_AddErrorTable.Designer.cs">
       <DependentUpon>201804081442295_AddErrorTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804141822255_Intergrate-Identity.cs" />
+    <Compile Include="Migrations\201804141822255_Intergrate-Identity.Designer.cs">
+      <DependentUpon>201804141822255_Intergrate-Identity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804142007242_changeKey.cs" />
+    <Compile Include="Migrations\201804142007242_changeKey.Designer.cs">
+      <DependentUpon>201804142007242_changeKey.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804142012410_changeUsername.cs" />
+    <Compile Include="Migrations\201804142012410_changeUsername.Designer.cs">
+      <DependentUpon>201804142012410_changeUsername.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -116,6 +136,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804081442295_AddErrorTable.resx">
       <DependentUpon>201804081442295_AddErrorTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804141822255_Intergrate-Identity.resx">
+      <DependentUpon>201804141822255_Intergrate-Identity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804142007242_changeKey.resx">
+      <DependentUpon>201804142007242_changeKey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804142012410_changeUsername.resx">
+      <DependentUpon>201804142012410_changeUsername.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

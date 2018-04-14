@@ -1,10 +1,11 @@
-﻿using System.Data.Entity;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using System.Data.Entity;
 using TShop.Model.Models;
 
 namespace TShop.Data
 {
     // Suffix is DbContext, inheritance from DbContext.
-    public class TShopDbContext : DbContext
+    public class TShopDbContext : IdentityDbContext<ApplicationUser>
     {
         // Fill connection name
         public TShopDbContext()
@@ -35,9 +36,15 @@ namespace TShop.Data
         public DbSet<VisitorStatistic> VisitorStatistics { set; get; }
         public DbSet<Error> Errors { set; get; }
 
+        public static TShopDbContext Create()
+        {
+            return new TShopDbContext();
+        }
         // Overwrite onModelCreating method of DbContext
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<IdentityUserRole>().HasKey(n => new { n.UserId, n.RoleId });
+            modelBuilder.Entity<IdentityUserLogin>().HasKey(n => n.UserId);
         }
     }
 }
