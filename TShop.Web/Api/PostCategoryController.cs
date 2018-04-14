@@ -1,39 +1,99 @@
-﻿using System;
+﻿using AutoMapper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using TShop.Model.Models;
+using TShop.Service;
+using TShop.Web.Infratructures.Cores;
+using TShop.Web.Models;
+using TShop.Web.Infratructures.Extensions;
 
 namespace TShop.Web.Api
 {
-    public class PostCategoryController : ApiController
+    [RoutePrefix("api/postcategory")]
+    public class PostCategoryController : ApiControllerBase
     {
-        // GET api/<controller>
-        public IEnumerable<string> Get()
+        IPostCategoryService _postCategoryService;
+        public PostCategoryController(IErrorService errorService, IPostCategoryService postCategoryService)
+            : base(errorService)
         {
-            return new string[] { "value1", "value2" };
+            this._postCategoryService = postCategoryService;
+        }
+        [Route("getall")]
+        public HttpResponseMessage Get(HttpRequestMessage requestMessage)
+        {
+            return CreateHttpReponse(requestMessage, () =>
+            {
+                var lstCategory = _postCategoryService.GetAll();
+                var lstCategoryVM = Mapper.Map<List<PostCategoryViewModel>>(lstCategory);
+                HttpResponseMessage response = requestMessage.CreateResponse(HttpStatusCode.OK, lstCategoryVM);
+                return response;
+            });
+        }
+        [Route("add")]
+        public HttpResponseMessage Post(HttpRequestMessage requestMessage, PostCategoryViewModel postCategoryVM)
+        {
+            PostCategory postCategory = new PostCategory();
+            postCategory.UpdatePostCategory(postCategoryVM);
+            return CreateHttpReponse(requestMessage, () =>
+            {
+                HttpResponseMessage response = null;
+                if (ModelState.IsValid)
+                {
+                    var category = _postCategoryService.Add(postCategory);
+                    _postCategoryService.saveChange();
+                    response = requestMessage.CreateResponse(HttpStatusCode.Created, category);
+                }
+                else
+                {
+                    response = requestMessage.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+                }
+                return response;
+            });
         }
 
-        // GET api/<controller>/5
-        public string Get(int id)
+        [Route("update")]
+        public HttpResponseMessage Put(HttpRequestMessage requestMessage, PostCategoryViewModel postCategoryVM)
         {
-            return "value";
+            return CreateHttpReponse(requestMessage, () =>
+            {
+                HttpResponseMessage response = null;
+                if (ModelState.IsValid)
+                {
+                    PostCategory postCategory = _postCategoryService.GetById(postCategoryVM.Id);
+                    postCategory.UpdatePostCategory(postCategoryVM);
+                    _postCategoryService.Update(postCategory);
+                    _postCategoryService.saveChange();
+                    response = requestMessage.CreateResponse(HttpStatusCode.OK);
+                }
+                else
+                {
+                    response = requestMessage.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+                }
+                return response;
+            });
         }
-
-        // POST api/<controller>
-        public void Post([FromBody]string value)
+        [Route("delete")]
+        public HttpResponseMessage Delete(HttpRequestMessage requestMessage, int id)
         {
-        }
-
-        // PUT api/<controller>/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/<controller>/5
-        public void Delete(int id)
-        {
+            return CreateHttpReponse(requestMessage, () =>
+            {
+                HttpResponseMessage response = null;
+                if (ModelState.IsValid)
+                {
+                    _postCategoryService.Delete(id);
+                    _postCategoryService.saveChange();
+                    response = requestMessage.CreateResponse(HttpStatusCode.OK);
+                }
+                else
+                {
+                    response = requestMessage.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+                }
+                return response;
+            });
         }
     }
 }

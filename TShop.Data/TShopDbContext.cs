@@ -33,6 +33,7 @@ namespace TShop.Data
         public DbSet<DetailOrder> DetailOrders { set; get; }
         public DbSet<Order> Orders { set; get; }
         public DbSet<VisitorStatistic> VisitorStatistics { set; get; }
+        public DbSet<Error> Errors { set; get; }
 
         // Overwrite onModelCreating method of DbContext
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
