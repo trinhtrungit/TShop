@@ -8,6 +8,7 @@ namespace TShop.Data.Repositories
     public interface IProductRepository : IRepository<Product>
     {
         IEnumerable<Product> GetByAlias(string alias);
+
         IEnumerable<Product> GetByTagPaging(string tag, int pageIndex, int pageSize, out int rowTotals);
     }
 

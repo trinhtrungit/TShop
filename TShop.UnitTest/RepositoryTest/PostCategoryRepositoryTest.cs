@@ -1,9 +1,8 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Collections.Generic;
+using System.Linq;
 using TShop.Data.Infrastructure;
 using TShop.Data.Repositories;
 using TShop.Model.Models;
-using System.Linq;
 
 namespace TShop.UnitTest.RepositoriesTest
 {
@@ -36,6 +35,7 @@ namespace TShop.UnitTest.RepositoriesTest
             Assert.IsNotNull(result);
             Assert.AreEqual(10, result.Id);
         }
+
         [TestMethod]
         public void PostCategory_Repository_GetAll()
         {

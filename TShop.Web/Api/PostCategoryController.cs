@@ -1,27 +1,27 @@
 ﻿using AutoMapper;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using TShop.Model.Models;
 using TShop.Service;
 using TShop.Web.Infratructures.Cores;
-using TShop.Web.Models;
 using TShop.Web.Infratructures.Extensions;
+using TShop.Web.Models;
 
 namespace TShop.Web.Api
 {
     [RoutePrefix("api/postcategory")]
     public class PostCategoryController : ApiControllerBase
     {
-        IPostCategoryService _postCategoryService;
+        private IPostCategoryService _postCategoryService;
+
         public PostCategoryController(IErrorService errorService, IPostCategoryService postCategoryService)
             : base(errorService)
         {
             this._postCategoryService = postCategoryService;
         }
+
         [Route("getall")]
         public HttpResponseMessage Get(HttpRequestMessage requestMessage)
         {
@@ -33,6 +33,7 @@ namespace TShop.Web.Api
                 return response;
             });
         }
+
         [Route("add")]
         public HttpResponseMessage Post(HttpRequestMessage requestMessage, PostCategoryViewModel postCategoryVM)
         {
@@ -76,6 +77,7 @@ namespace TShop.Web.Api
                 return response;
             });
         }
+
         [Route("delete")]
         public HttpResponseMessage Delete(HttpRequestMessage requestMessage, int id)
         {

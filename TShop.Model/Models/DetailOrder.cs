@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TShop.Model.Models
 {
@@ -14,9 +9,11 @@ namespace TShop.Model.Models
         [Key]
         [Column(Order = 1)]
         public int OrderId { set; get; }
+
         [Key]
         [Column(Order = 2)]
         public int ProductId { set; get; }
+
         public int Quantity { set; get; }
 
         [ForeignKey("OrderId")]

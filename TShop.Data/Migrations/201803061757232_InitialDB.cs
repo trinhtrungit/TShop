@@ -1,8 +1,7 @@
 namespace TShop.Data.Migrations
 {
-    using System;
     using System.Data.Entity.Migrations;
-    
+
     public partial class InitialDB : DbMigration
     {
         public override void Up()
@@ -20,7 +19,7 @@ namespace TShop.Data.Migrations
                 .ForeignKey("dbo.Products", t => t.ProductId, cascadeDelete: true)
                 .Index(t => t.OrderId)
                 .Index(t => t.ProductId);
-            
+
             CreateTable(
                 "dbo.Orders",
                 c => new
@@ -38,7 +37,7 @@ namespace TShop.Data.Migrations
                         PaymentStatus = c.String(nullable: false, maxLength: 100),
                     })
                 .PrimaryKey(t => t.Id);
-            
+
             CreateTable(
                 "dbo.Products",
                 c => new
@@ -69,7 +68,7 @@ namespace TShop.Data.Migrations
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.ProductCategories", t => t.CategoryId, cascadeDelete: true)
                 .Index(t => t.CategoryId);
-            
+
             CreateTable(
                 "dbo.ProductCategories",
                 c => new
@@ -90,7 +89,7 @@ namespace TShop.Data.Migrations
                         Status = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
-            
+
             CreateTable(
                 "dbo.Footers",
                 c => new
@@ -99,7 +98,7 @@ namespace TShop.Data.Migrations
                         FooterContent = c.String(nullable: false, maxLength: 500),
                     })
                 .PrimaryKey(t => t.Id);
-            
+
             CreateTable(
                 "dbo.GroupMenus",
                 c => new
@@ -108,7 +107,7 @@ namespace TShop.Data.Migrations
                         Name = c.String(nullable: false, maxLength: 100),
                     })
                 .PrimaryKey(t => t.Id);
-            
+
             CreateTable(
                 "dbo.Menus",
                 c => new
@@ -123,7 +122,7 @@ namespace TShop.Data.Migrations
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.GroupMenus", t => t.GroupId, cascadeDelete: true)
                 .Index(t => t.GroupId);
-            
+
             CreateTable(
                 "dbo.Pages",
                 c => new
@@ -136,7 +135,7 @@ namespace TShop.Data.Migrations
                         Status = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
-            
+
             CreateTable(
                 "dbo.PostCategories",
                 c => new
@@ -157,7 +156,7 @@ namespace TShop.Data.Migrations
                         Status = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
-            
+
             CreateTable(
                 "dbo.Posts",
                 c => new
@@ -183,7 +182,7 @@ namespace TShop.Data.Migrations
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.PostCategories", t => t.CategoryId, cascadeDelete: true)
                 .Index(t => t.CategoryId);
-            
+
             CreateTable(
                 "dbo.PostTags",
                 c => new
@@ -196,7 +195,7 @@ namespace TShop.Data.Migrations
                 .ForeignKey("dbo.Tags", t => t.TagId, cascadeDelete: true)
                 .Index(t => t.TagId)
                 .Index(t => t.PostId);
-            
+
             CreateTable(
                 "dbo.Tags",
                 c => new
@@ -206,7 +205,7 @@ namespace TShop.Data.Migrations
                         TagType = c.String(),
                     })
                 .PrimaryKey(t => t.Id);
-            
+
             CreateTable(
                 "dbo.ProductTags",
                 c => new
@@ -219,7 +218,7 @@ namespace TShop.Data.Migrations
                 .ForeignKey("dbo.Tags", t => t.TagId, cascadeDelete: true)
                 .Index(t => t.TagId)
                 .Index(t => t.ProductId);
-            
+
             CreateTable(
                 "dbo.Sliders",
                 c => new
@@ -233,7 +232,7 @@ namespace TShop.Data.Migrations
                         Status = c.Boolean(),
                     })
                 .PrimaryKey(t => t.Id);
-            
+
             CreateTable(
                 "dbo.SupportOnlines",
                 c => new
@@ -247,7 +246,7 @@ namespace TShop.Data.Migrations
                         Status = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
-            
+
             CreateTable(
                 "dbo.SystemConfigs",
                 c => new
@@ -258,7 +257,7 @@ namespace TShop.Data.Migrations
                         ValueInt = c.Int(),
                     })
                 .PrimaryKey(t => t.Id);
-            
+
             CreateTable(
                 "dbo.VisitorStatistics",
                 c => new
@@ -268,9 +267,8 @@ namespace TShop.Data.Migrations
                         IPAddress = c.String(nullable: false, maxLength: 50),
                     })
                 .PrimaryKey(t => t.Id);
-            
         }
-        
+
         public override void Down()
         {
             DropForeignKey("dbo.ProductTags", "TagId", "dbo.Tags");

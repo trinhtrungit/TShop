@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using TShop.Model.Models;
+﻿using System.Collections.Generic;
 using TShop.Data.Infrastructure;
 using TShop.Data.Repositories;
+using TShop.Model.Models;
 
 namespace TShop.Service
 {
@@ -17,19 +16,23 @@ namespace TShop.Service
         void saveChange();
 
         PostCategory GetById(int id);
+
         IEnumerable<PostCategory> GetAll();
+
         IEnumerable<PostCategory> GetMultiByParentId(int parentId);
     }
 
     public class PostCategoryService : IPostCategoryService
     {
-        IPostCategoryRepository   _postCategoryRepository;
-        IUnitOfWork _unitOfWork;
+        private IPostCategoryRepository _postCategoryRepository;
+        private IUnitOfWork _unitOfWork;
+
         public PostCategoryService(IPostCategoryRepository _postCategoryRepository, IUnitOfWork unitOfWork)
         {
             this._postCategoryRepository = _postCategoryRepository;
             this._unitOfWork = unitOfWork;
         }
+
         public PostCategory Add(PostCategory postCategory)
         {
             return this._postCategoryRepository.Add(postCategory);
@@ -54,7 +57,6 @@ namespace TShop.Service
         {
             return this._postCategoryRepository.GetAll();
         }
-
 
         public IEnumerable<PostCategory> GetMultiByParentId(int parentId)
         {

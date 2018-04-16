@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Xml.Linq;
 using TShop.Model.Abstracts;
 
 namespace TShop.Model.Models
@@ -28,6 +27,7 @@ namespace TShop.Model.Models
 
         [Column(TypeName = "xml")]
         public string MoreImages { set; get; }
+
         public decimal Price { set; get; }
         public decimal? Promotion { set; get; }
         public int? Quantity { set; get; }

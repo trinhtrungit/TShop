@@ -3,7 +3,6 @@ namespace TShop.Data.Migrations
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
     using System;
-    using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
     using TShop.Model.Models;
@@ -19,7 +18,7 @@ namespace TShop.Data.Migrations
         {
             //  This method will be called after migrating to the latest version.
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
+            //  You can use the DbSet<T>.AddOrUpdate() helper extension method
             //  to avoid creating duplicate seed data.
             var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new TShopDbContext()));
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new TShopDbContext()));
@@ -31,7 +30,6 @@ namespace TShop.Data.Migrations
                 EmailConfirmed = true,
                 Birthday = DateTime.Now,
                 FullName = "Technology Education"
-
             };
             // create
             manager.Create(user, "123654$");
@@ -46,6 +44,5 @@ namespace TShop.Data.Migrations
 
             manager.AddToRoles(adminUser.Id, new string[] { "Admin", "User" });
         }
-        }
     }
-
+}

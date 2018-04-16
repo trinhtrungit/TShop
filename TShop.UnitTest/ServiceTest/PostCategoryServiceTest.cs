@@ -1,10 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TShop.Data.Infrastructure;
 using TShop.Data.Repositories;
 using TShop.Model.Models;
@@ -45,6 +41,7 @@ namespace TShop.UnitTest.ServiceTest
             Assert.IsNotNull(result);
             Assert.AreEqual(4, result.Count);
         }
+
         [TestMethod]
         public void PostCategory_Service_Create()
         {
@@ -55,13 +52,12 @@ namespace TShop.UnitTest.ServiceTest
             postCate.FeatureImage = "Test";
             postCate.Status = true;
 
-            _mockPostCategoryRepository.Setup(n=>n.Add(postCate)).Returns(postCate);
+            _mockPostCategoryRepository.Setup(n => n.Add(postCate)).Returns(postCate);
             // call add method
             var result = _postCategoryService.Add(postCate);
             // compare
             Assert.IsNotNull(result);
             Assert.AreEqual(1, result.Id);
-
         }
     }
 }

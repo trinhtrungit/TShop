@@ -9,6 +9,7 @@ namespace TShop.Data.Infrastructure
     public abstract class RepositoryBase<T> : IRepository<T> where T : class
     {
         #region Properties
+
         private TShopDbContext dataContext;
         private readonly IDbSet<T> dbSet;
 
@@ -22,7 +23,8 @@ namespace TShop.Data.Infrastructure
         {
             get { return dataContext ?? (dataContext = DbFactory.Init()); }
         }
-        #endregion
+
+        #endregion Properties
 
         protected RepositoryBase(IDbFactory dbFactory)
         {
@@ -31,6 +33,7 @@ namespace TShop.Data.Infrastructure
         }
 
         #region Implementation
+
         public virtual T Add(T entity)
         {
             return dbSet.Add(entity);
@@ -46,11 +49,13 @@ namespace TShop.Data.Infrastructure
         {
             return dbSet.Remove(entity);
         }
+
         public virtual T Delete(int id)
         {
             var entity = dbSet.Find(id);
             return dbSet.Remove(entity);
         }
+
         public virtual void DeleteMulti(Expression<Func<T, bool>> where)
         {
             IEnumerable<T> objects = dbSet.Where<T>(where).AsEnumerable();
@@ -67,7 +72,6 @@ namespace TShop.Data.Infrastructure
         {
             return dbSet.Where(where).ToList();
         }
-
 
         public virtual int Count(Expression<Func<T, bool>> where)
         {
@@ -141,6 +145,7 @@ namespace TShop.Data.Infrastructure
         {
             return dataContext.Set<T>().Count<T>(predicate) > 0;
         }
-        #endregion
+
+        #endregion Implementation
     }
 }

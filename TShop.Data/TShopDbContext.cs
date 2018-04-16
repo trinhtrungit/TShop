@@ -40,6 +40,7 @@ namespace TShop.Data
         {
             return new TShopDbContext();
         }
+
         // Overwrite onModelCreating method of DbContext
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

@@ -1,30 +1,37 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using TShop.Data.Infrastructure;
 using TShop.Data.Repositories;
 using TShop.Model.Models;
-using TShop.Data.Infrastructure;
+
 namespace TShop.Service
 {
     public interface IPostService
     {
         void Add(Post post);
+
         void Update(Post post);
+
         void Delete(int id);
 
         IEnumerable<Post> GetAll();
+
         Post GetById(int id);
+
         IEnumerable<Post> GetMultiByPaging(int page, int pageSize, out int rowTotals);
+
         IEnumerable<Post> GetMultiByTagPaging(string tag, int page, int pageSize, out int rowTotals);
+
         IEnumerable<Post> GetMultiByCategoryPaging(int categoryId, int page, int pageSize, out int rowTotals);
+
         void SaveChange();
     }
+
     public class PostService : IPostService
     {
-        IPostRepository _postRepository;
-        IUnitOfWork _unitOfWork;
+        private IPostRepository _postRepository;
+        private IUnitOfWork _unitOfWork;
+
         public PostService(IPostRepository postRepository, IUnitOfWork unitOfWork)
         {
             this._postRepository = postRepository;
@@ -63,13 +70,14 @@ namespace TShop.Service
 
         public IEnumerable<Post> GetMultiByTagPaging(string tag, int page, int pageSize, out int rowTotals)
         {
-              return this._postRepository.GetAllByTag(tag, page, pageSize, out rowTotals);
+            return this._postRepository.GetAllByTag(tag, page, pageSize, out rowTotals);
         }
 
         public IEnumerable<Post> GetMultiByCategoryPaging(int categoryId, int page, int pageSize, out int rowTotals)
         {
-            return this._postRepository.GetMultiPaging(n => n.CategoryId == categoryId && n.Status, out rowTotals, page, pageSize, new String[]{"PostCategory"});
+            return this._postRepository.GetMultiPaging(n => n.CategoryId == categoryId && n.Status, out rowTotals, page, pageSize, new String[] { "PostCategory" });
         }
+
         public void SaveChange()
         {
             this._unitOfWork.Commit();

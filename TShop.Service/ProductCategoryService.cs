@@ -1,33 +1,38 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TShop.Model.Models;
-using TShop.Data.Repositories;
+﻿using System.Collections.Generic;
 using TShop.Data.Infrastructure;
+using TShop.Data.Repositories;
+using TShop.Model.Models;
 
 namespace TShop.Service
 {
     public interface IProductCategoryService
     {
         void Add(ProductCategory productcategory);
+
         void Update(ProductCategory productcategory);
+
         void Delete(int id);
+
         void SaveChange();
+
         ProductCategory GetById(int id);
+
         IEnumerable<ProductCategory> GetAll();
+
         IEnumerable<ProductCategory> GetByParentId(int parentId);
     }
-    class ProductCategoryService : IProductCategoryService
+
+    internal class ProductCategoryService : IProductCategoryService
     {
-        IProductCategoryRepository _productCategoryRepository;
-        IUnitOfWork _unitOfWork;
+        private IProductCategoryRepository _productCategoryRepository;
+        private IUnitOfWork _unitOfWork;
+
         public ProductCategoryService(IProductCategoryRepository productCategoryRepository, IUnitOfWork unitOfWork)
         {
             this._productCategoryRepository = productCategoryRepository;
             this._unitOfWork = unitOfWork;
         }
+
         public void Add(ProductCategory productCategory)
         {
             this._productCategoryRepository.Add(productCategory);

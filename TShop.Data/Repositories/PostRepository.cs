@@ -8,6 +8,7 @@ namespace TShop.Data.Repositories
     public interface IPostRepository : IRepository<Post>
     {
         IEnumerable<Post> GetByAlias(string alias);
+
         IEnumerable<Post> GetAllByTag(string tag, int pageIndex, int pageSize, out int rowTotals);
     }
 
@@ -22,6 +23,7 @@ namespace TShop.Data.Repositories
         {
             return this.DbContext.Posts.Where(n => n.Alias == alias);
         }
+
         public IEnumerable<Post> GetAllByTag(string tag, int pageIndex, int pageSize, out int rowTotals)
         {
             var query = from p in DbContext.Posts
