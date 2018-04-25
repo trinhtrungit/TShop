@@ -44,5 +44,47 @@ namespace TShop.Web.Infratructures.Extensions
             post.MetaDescription = postVM.MetaDescription;
             post.Status = postVM.Status;
         }
+
+        public static void UpdateProductCategory(this ProductCategory productCategory, ProductCategoryViewModel productCategoryView)
+        {
+            productCategory.Id = productCategoryView.Id;
+            productCategory.Name = productCategoryView.Name;
+            productCategory.Alias = productCategoryView.Alias;
+            productCategory.FeatureImage = productCategoryView.FeatureImage;
+            productCategory.ParentId = productCategoryView.ParentId;
+            productCategory.DisplayOrder = productCategoryView.DisplayOrder;
+            productCategory.HomeFlag = productCategoryView.HomeFlag;
+            productCategory.CreateDate = productCategoryView.CreateDate;
+            productCategory.CreateBy = productCategoryView.CreateBy;
+            productCategory.UpdateDate = productCategoryView.UpdateDate;
+            productCategory.UpdateBy = productCategoryView.UpdateBy;
+            productCategory.MetaKeyword = productCategoryView.MetaKeyword;
+            productCategory.MetaDescription = productCategoryView.MetaDescription;
+            productCategory.Status = productCategoryView.Status;
+        }
+
+        public static void UpdateProduct(this Product product, ProductViewModel productViewModel)
+        {
+            product.Id = productViewModel.Id;
+            product.Name = productViewModel.Name;
+            product.Alias = productViewModel.Alias;
+            product.Image = productViewModel.Image;
+            product.MoreImages = productViewModel.MoreImages;
+            product.Price = productViewModel.Price;
+            product.Quantity = productViewModel.Quantity;
+            product.Varranty = productViewModel.Varranty;
+            product.ProductContent = productViewModel.ProductContent;
+            product.Description = productViewModel.Description;
+            product.CategoryId = productViewModel.CategoryId;
+            product.HotFlag = productViewModel.HotFlag;
+            product.HomeFlag = productViewModel.HomeFlag;
+            product.ViewCount = productViewModel.ViewCount;
+            product.CreateDate = productViewModel.CreateDate;
+            product.CreateBy = productViewModel.CreateBy;
+            product.UpdateDate = productViewModel.UpdateDate;
+            product.UpdateBy = productViewModel.UpdateBy;
+            product.MetaKeyword = productViewModel.MetaKeyword;
+            product.MetaDescription = productViewModel.MetaDescription;
+        }
     }
 }

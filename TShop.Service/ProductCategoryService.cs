@@ -7,7 +7,7 @@ namespace TShop.Service
 {
     public interface IProductCategoryService
     {
-        void Add(ProductCategory productcategory);
+        ProductCategory Add(ProductCategory productcategory);
 
         void Update(ProductCategory productcategory);
 
@@ -33,9 +33,9 @@ namespace TShop.Service
             this._unitOfWork = unitOfWork;
         }
 
-        public void Add(ProductCategory productCategory)
+        public ProductCategory Add(ProductCategory productCategory)
         {
-            this._productCategoryRepository.Add(productCategory);
+            return this._productCategoryRepository.Add(productCategory);
         }
 
         public void Update(ProductCategory productcategory)

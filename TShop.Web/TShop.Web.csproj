@@ -213,6 +213,7 @@
   <ItemGroup>
     <Compile Include="Api\AccountController.cs" />
     <Compile Include="Api\PostCategoryController.cs" />
+    <Compile Include="Api\ProductCategoryController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
@@ -243,6 +244,9 @@
     <Content Include="App\app.js" />
     <Content Include="App\Components\Home\HomeController.js" />
     <Content Include="App\Components\Home\HomeView.html" />
+    <Content Include="App\Components\ProductCategories\ProductCategoryListController.js" />
+    <Content Include="App\Components\ProductCategories\ProductCategoryListView.html" />
+    <Content Include="App\Components\ProductCategories\ProductCategories.Module.js" />
     <Content Include="App\Components\Products\ProductAddController.js" />
     <Content Include="App\Components\Products\ProductAddView.html" />
     <Content Include="App\Components\Products\ProductEditController.js" />
@@ -251,6 +255,7 @@
     <Content Include="App\Components\Products\ProductListView.html" />
     <Content Include="App\Components\Products\Products.Module.js" />
     <Content Include="App\Shared\Modules\TShop.Common.js" />
+    <Content Include="App\Shared\Services\ApiService.js" />
     <Content Include="Assets\Admin\css\AdminLTE.css" />
     <Content Include="Assets\Admin\css\AdminLTE.min.css" />
     <Content Include="Assets\Admin\css\alt\AdminLTE-bootstrap-social.css" />
@@ -2111,12 +2116,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App\Components\Orders\" />
-    <Folder Include="App\Components\ProductCatogories\" />
     <Folder Include="App\Components\Roles\" />
     <Folder Include="App\Components\Users\" />
     <Folder Include="App\Shared\Footer\" />
     <Folder Include="App\Shared\Navigations\" />
-    <Folder Include="App\Shared\Services\" />
     <Folder Include="App_Data\" />
     <Folder Include="Assets\Client\" />
   </ItemGroup>

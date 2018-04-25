@@ -37,10 +37,10 @@ namespace TShop.Web.Api
         [Route("add")]
         public HttpResponseMessage Post(HttpRequestMessage requestMessage, PostCategoryViewModel postCategoryVM)
         {
-            PostCategory postCategory = new PostCategory();
-            postCategory.UpdatePostCategory(postCategoryVM);
             return CreateHttpReponse(requestMessage, () =>
             {
+                PostCategory postCategory = new PostCategory();
+                postCategory.UpdatePostCategory(postCategoryVM);
                 HttpResponseMessage response = null;
                 if (ModelState.IsValid)
                 {
