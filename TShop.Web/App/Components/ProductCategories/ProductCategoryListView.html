@@ -1,0 +1,67 @@
+﻿    <section class="content-header">
+        <h1>
+            <small>Product Categories</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Admin</a></li>
+            <li><a href="#">Product Categories</a></li>
+            <li class="active">List Categories</li>
+        </ol>
+    </section>
+    <row>
+        <section class="content">
+            <div class="box">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Product Categories</h3>
+
+                    <div class="box-tools">
+                        <div class="input-group input-group-sm" style="width: 150px;">
+                            <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
+
+                            <div class="input-group-btn">
+                                <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.box-header  -->
+                <div class="box-body table-responsive no-padding">
+                    <table class="table table-hover">
+                        <tbody>
+                            <tr>
+                                <th style="width: 5%">ID</th>
+                                <th style="width: 20%">Name</th>
+                                <th style="width: 25%">Alias</th>
+                                <th style="width: 20%">Feature Image</th>
+                                <th style="width: 15%">Create Date</th>
+                                <th style="width: 5%">Status</th>
+                                <th style="width: 10%">Options</th>
+                            </tr>
+
+                            <tr ng-repeat="item in ProductCategories">
+                                <td>{{item.Id}}</td>
+                                <td>{{item.Name}}</td>
+                                <td>{{item.Alias}}</td>
+                                <td> {{item.FeatureImage}}</td>
+                                <td>{{item.CreateDate | date: 'dd/MM/yyyy'}}</td>
+                                <td>
+                                    <span ng-class="{'label label-success': item.Status == true, 'label label-danger' : item.Status == false}">
+                                        {{item.Status | statusFilter}}
+                                    </span>
+                                </td>
+                                <td>
+                                    <button class="btn btn-sm btn-success"><i class="fa fa-pencil"></i></button>
+                                    <button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer">
+                    <pager-directive page="{{pageIndex}}" custom-path="{{customPath}}" pages-count="{{totalPages}}" total-count="{{totalCounts}}" search-func="getProductCategories(page)"></pager-directive>
+                </div><!-- /.box-footer-->
+            </div>
+        </section>
+    </row>

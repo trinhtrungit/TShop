@@ -222,6 +222,7 @@
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Infratructures\Cores\PaginationSet.cs" />
     <Compile Include="Infratructures\Extensions\EntityExtension.cs" />
     <Compile Include="Mapping\AutoMapperConfiguration.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -254,6 +255,8 @@
     <Content Include="App\Components\Products\ProductListController.js" />
     <Content Include="App\Components\Products\ProductListView.html" />
     <Content Include="App\Components\Products\Products.Module.js" />
+    <Content Include="App\Shared\directives\pagerDirective.html" />
+    <Content Include="App\Shared\directives\pagerDirective.js" />
     <Content Include="App\Shared\Filter\filters.js" />
     <Content Include="App\Shared\Modules\TShop.Common.js" />
     <Content Include="App\Shared\Services\ApiService.js" />
