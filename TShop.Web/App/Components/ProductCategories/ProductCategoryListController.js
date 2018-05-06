@@ -17,7 +17,7 @@
                 params: {
                     keyWord: $scope.keyWord,
                     pageIndex: pageIndex,
-                    pageSize: 2
+                    pageSize: 6
                 }
             } 
             apiService.get('/api/productcategory/getall', config, function (result) {
