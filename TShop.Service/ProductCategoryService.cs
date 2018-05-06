@@ -19,6 +19,8 @@ namespace TShop.Service
 
         IEnumerable<ProductCategory> GetAll();
 
+        IEnumerable<ProductCategory> SearchByKeyword(string keyWord);
+
         IEnumerable<ProductCategory> GetByParentId(int parentId);
     }
 
@@ -66,6 +68,18 @@ namespace TShop.Service
         public IEnumerable<ProductCategory> GetByParentId(int parentId)
         {
             return this._productCategoryRepository.GetMulti(n => n.Status && n.ParentId == parentId);
+        }
+
+        public IEnumerable<ProductCategory> SearchByKeyword(string keyWord)
+        {
+            if (string.IsNullOrEmpty(keyWord))
+            {
+                return this._productCategoryRepository.GetAll();
+            }
+            else
+            {
+                return this._productCategoryRepository.GetMulti(n => n.Name.Contains(keyWord) || n.MetaDescription.Contains(keyWord));
+            }
         }
     }
 }

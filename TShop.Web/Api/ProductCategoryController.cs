@@ -23,16 +23,16 @@ namespace TShop.Web.Api
         }
 
         [Route("getall")]
-        public HttpResponseMessage Get(HttpRequestMessage requestMessage, int pageIndex, int PageSize = 20)
+        public HttpResponseMessage Get(HttpRequestMessage requestMessage, string keyWord, int pageIndex, int PageSize = 20)
         {
             return CreateHttpReponse(requestMessage, () =>
             {
-            int totalRows = 0;
-            var listProductCate = this._productCategoryService.GetAll();
-            totalRows = listProductCate.Count();
-            var query = listProductCate.OrderBy(n => n.CreateDate).Skip(pageIndex * PageSize).Take(PageSize);
-            var listProductCateVM = Mapper.Map<List<ProductCategoryViewModel>>(query);
-            var paginationSet = new PaginationSet<ProductCategoryViewModel>() {
+                int totalRows = 0;
+                var listProductCate = this._productCategoryService.SearchByKeyword(keyWord);
+                totalRows = listProductCate.Count();
+                var query = listProductCate.OrderBy(n => n.CreateDate).Skip(pageIndex * PageSize).Take(PageSize);
+                var listProductCateVM = Mapper.Map<List<ProductCategoryViewModel>>(query);
+                var paginationSet = new PaginationSet<ProductCategoryViewModel>() {
                     Items = listProductCateVM,
                     TotalCounts = totalRows,
                     PageIndex = pageIndex,
@@ -46,16 +46,17 @@ namespace TShop.Web.Api
         [Route("add")]
         public HttpResponseMessage Post(HttpRequestMessage requestMessage, ProductCategoryViewModel productCategoryViewModel)
         {
-            ProductCategory productCategory = new ProductCategory();
-            productCategory.UpdateProductCategory(productCategoryViewModel);
             return CreateHttpReponse(requestMessage, () =>
             {
                 HttpResponseMessage responseMess = null;
                 if (ModelState.IsValid)
                 {
+                    ProductCategory productCategory = new ProductCategory();
+                    productCategory.UpdateProductCategory(productCategoryViewModel);
                     var productCate = _productCategoryService.Add(productCategory);
                     _productCategoryService.SaveChange();
-                    responseMess = requestMessage.CreateResponse(HttpStatusCode.Created, productCate);
+                    var reponseData = Mapper.Map<ProductCategory, ProductCategoryViewModel>(productCate);
+                    responseMess = requestMessage.CreateResponse(HttpStatusCode.Created, reponseData);
                 }
                 else
                 {

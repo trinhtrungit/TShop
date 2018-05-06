@@ -25,6 +25,7 @@
     <![endif]-->
     <!-- Google Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <link href="~/Assets/Admin/libs/toastr/toastr.css" rel="stylesheet" />
 </head>
 <body class="hold-transition skin-blue sidebar-mini" ng-app="TShop">
     <!-- Site wrapper -->
@@ -200,7 +201,7 @@
                 <!-- search form -->
                 <form action="#" method="get" class="sidebar-form">
                     <div class="input-group">
-                        <input type="text" name="q" class="form-control" placeholder="Search...">
+                        <input type="text" name="q" class="form-control" placeholder="Tìm kiếm index...">
                         <span class="input-group-btn">
                             <button type="submit" name="search" id="search-btn" class="btn btn-flat">
                                 <i class="fa fa-search"></i>
@@ -584,12 +585,15 @@
     <!-- AngularJs -->
     <script src="~/Assets/Admin/libs/angular/angular.js"></script>
     <script src="~/Assets/Admin/libs/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="~/Assets/Admin/libs/toastr/toastr.js"></script>
     <script src="~/App/Shared/Modules/TShop.Common.js"></script>
+    <script src="~/App/Shared/Services/notificationServices.js"></script>
     <script src="~/App/Shared/Filter/filters.js"></script>
     <script src="~/App/Shared/directives/pagerDirective.js"></script>
     <script src="~/App/Shared/Services/ApiService.js"></script>
     <script src="~/App/Components/Products/Products.Module.js"></script>
     <script src="~/App/Components/ProductCategories/ProductCategories.Module.js"></script>
+
     <script src="~/App/app.js"></script>
     <script src="~/App/Components/Home/HomeController.js"></script>
     <script src="~/App/Components/Products/ProductListController.js"></script>
