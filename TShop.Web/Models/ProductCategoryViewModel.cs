@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace TShop.Web.Models
 {
     public class ProductCategoryViewModel
     {
         public int Id { set; get; }
-
+        [Required]
         public string Name { set; get; }
-
+        [Required]
         public string Alias { set; get; }
+        [Required]
         public string FeatureImage { set; get; }
 
         public int? ParentId { set; get; }
@@ -27,7 +29,7 @@ namespace TShop.Web.Models
         public string MetaKeyword { set; get; }
 
         public string MetaDescription { set; get; }
-
+        [Required]
         public bool Status { set; get; }
 
         public virtual IEnumerable<ProductViewModel> Products { set; get; }

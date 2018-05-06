@@ -43,6 +43,18 @@ namespace TShop.Web.Api
             });
         }
 
+        [Route("getallcategories")]
+        public HttpResponseMessage Get(HttpRequestMessage requestMessage)
+        {
+            return CreateHttpReponse(requestMessage, () =>
+            {
+                var listProductCate = this._productCategoryService.GetAll();
+                var listProductCateVM = Mapper.Map<List<ProductCategoryViewModel>>(listProductCate);
+                HttpResponseMessage responseMess = requestMessage.CreateResponse(HttpStatusCode.OK, listProductCateVM);
+                return responseMess;
+            });
+        }
+
         [Route("add")]
         public HttpResponseMessage Post(HttpRequestMessage requestMessage, ProductCategoryViewModel productCategoryViewModel)
         {

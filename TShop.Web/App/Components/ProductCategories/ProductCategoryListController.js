@@ -2,7 +2,7 @@
     app.controller('ProductCategoryListController', ProductCategoryListController);
     ProductCategoryListController.$inject = ['$scope', 'apiService', 'notificationServices'];
     function ProductCategoryListController($scope, apiService, notificationServices) {
-        $scope.ProductCategories = [];
+        //$scope.ProductCategories = [];
         $scope.getProductCategories = getProductCategories;
         $scope.pageIndex = 0;
         $scope.totalPages = 0;

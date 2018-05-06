@@ -35,6 +35,8 @@ namespace TShop.Web.Api
         }
 
         [Route("add")]
+        [HttpPost]
+        [AllowAnonymous]
         public HttpResponseMessage Post(HttpRequestMessage requestMessage, PostCategoryViewModel postCategoryVM)
         {
             return CreateHttpReponse(requestMessage, () =>

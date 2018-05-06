@@ -245,6 +245,8 @@
     <Content Include="App\app.js" />
     <Content Include="App\Components\Home\HomeController.js" />
     <Content Include="App\Components\Home\HomeView.html" />
+    <Content Include="App\Components\ProductCategories\ProductCategoriesAddController.js" />
+    <Content Include="App\Components\ProductCategories\ProductCategoriesAddView.html" />
     <Content Include="App\Components\ProductCategories\ProductCategoryListController.js" />
     <Content Include="App\Components\ProductCategories\ProductCategoryListView.html" />
     <Content Include="App\Components\ProductCategories\ProductCategories.Module.js" />
